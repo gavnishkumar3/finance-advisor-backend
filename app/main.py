@@ -22,6 +22,10 @@ app.add_middleware(
     allow_headers=["*"],          # Allow all headers
 )
 
+@app.options("/generate-plan")
+def generate_plan_options():
+    return Response(status_code=200)
+    
 @app.post("/generate-plan")
 def get_plan(user: UserProfile):
     try:
